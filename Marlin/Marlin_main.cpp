@@ -4279,12 +4279,20 @@ void manage_inactivity()
     if( (millis() - previous_millis_cmd) >  stepper_inactive_time )
     {
       if(blocks_queued() == false) {
+      #if ALLOW_X_STEP_DEACTIVATE
         disable_x();
+      #endif
+      #if ALLOW_Y_STEP_DEACTIVATE
         disable_y();
+      #endif
+      #if ALLOW_Z_STEP_DEACTIVATE
         disable_z();
+      #endif
+      #if ALLOW_E_STEP_DEACTIVATE
         disable_e0();
         disable_e1();
         disable_e2();
+      #endif
       }
     }
   }

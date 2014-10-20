@@ -231,6 +231,12 @@
 //default stepper release if idle
 #define DEFAULT_STEPPER_DEACTIVE_TIME 60
 
+//Allow stepper to deactivate (release) after DEFAULT_STEPPER_DEACTIVE_TIME time or not (useful for belt driven Z)
+#define ALLOW_X_STEP_DEACTIVATE  true
+#define ALLOW_Y_STEP_DEACTIVATE  true
+#define ALLOW_Z_STEP_DEACTIVATE  false
+#define ALLOW_E_STEP_DEACTIVATE  true
+
 #define DEFAULT_MINIMUMFEEDRATE       0.0     // minimum feedrate
 #define DEFAULT_MINTRAVELFEEDRATE     0.0
 
@@ -288,7 +294,7 @@
 #define CHDK_DELAY 50 //How long in ms the pin should stay HIGH before going LOW again
 
 #define SD_FINISHED_STEPPERRELEASE true  //if sd support and the file is finished: disable steppers?
-#define SD_FINISHED_RELEASECOMMAND "M84 X Y Z E" // You might want to keep the z enabled so your bed stays in place.
+#define SD_FINISHED_RELEASECOMMAND "M84 X Y E" // You might want to keep the z enabled so your bed stays in place. Also note ALLOW_Z_STEP_DEACTIVATE
 
 #define SDCARD_RATHERRECENTFIRST  //reverse file order of sd card menu display. Its sorted practically after the file system block order.
 // if a file is deleted, it frees a block. hence, the order is not purely chronological. To still have auto0.g accessible, there is again the option to do that.
